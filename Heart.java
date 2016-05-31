@@ -2,7 +2,10 @@ import java.awt.*;
 import java.lang.Math;
 public class Heart extends suits
 {
+public  Heart(){
+setColor(Color.red);
 
+}
 
     public void draw (Graphics g)
     {
