@@ -2,7 +2,12 @@ import java.awt.*;
 import java.lang.Math;
 public class Clubs extends suits
 {
+public Clubs(){
+setColor(Color.black);
+setWidth(10);
+setHeight(12);
 
+}
 
     public void draw (Graphics g)
     {

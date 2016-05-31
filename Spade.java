@@ -2,7 +2,11 @@ import java.awt.*;
 import java.lang.Math;
 public class Spade extends suits
 {
+public Spade(){
+setWidth(10);
+setHeight(12);
 
+}
 
     public void draw (Graphics g)
     {
@@ -45,7 +49,7 @@ public class Spade extends suits
 	triPointsX [2] = iCentreX + iWidth / 8;
 	triPointsY [2] = iCentreY + iHeight / 2;
 
-        g.setColor (Color.black);
+	g.setColor (Color.black);
 	g.fillArc (iPointsX [3], iPointsY [3], iWidth / 2, iHeight / 2, 180, 180);
 	g.fillArc (iPointsX [4], iPointsY [4], iWidth / 2, iHeight / 2, 180, 180);
 	g.fillPolygon (iPointsX, iPointsY, 3);
