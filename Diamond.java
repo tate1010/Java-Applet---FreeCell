@@ -2,6 +2,11 @@ import java.awt.*;
 import java.lang.Math;
 public class Diamond extends suits
 {
+public  Diamond(){
+setColor(Color.red);
+
+}
+
 
 
     public void draw (Graphics g)
