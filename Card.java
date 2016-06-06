@@ -123,9 +123,9 @@ public class Card extends ShapeClass
 		Clubs C4 = new Clubs ();
 		C4.draw (g);
 	    }
-	    g.setColor (Color.black);
+	   
 	    g.drawString (CardValue, getCentreX () - getWidth () / 2 + 7, getCentreY () - getHeight () / 2 + 12)
-	       ; g.drawString (CardValue, getCentreX () + getWidth () / 2 - 12, getCentreY () + getHeight () / 2 - 12)
+	       ; g.drawString (CardValue, getCentreX () + getWidth () / 2 - 14, getCentreY () + getHeight () / 2 - 12)
 	       ;
 	}
 

@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.util.*;
-public abstract class Deck extends ShapeClass
+public class Deck extends ShapeClass
 {
 
 
@@ -80,6 +80,13 @@ C2 = deal();
 addat(C2,(int) (Math.random () * 52));
 
 }
+}
+
+public void draw(Graphics G){
+
+((Card) Deck.elementAt(0)).draw(G);
+
+
 }
 
 
