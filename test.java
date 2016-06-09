@@ -16,8 +16,9 @@ public class test extends Applet
       C3.draw(g);
       */
       Card S5 = new Card();
-      S5.setCardValue("5");
-      S5.setCardSuit("Diamond");
+      S5.setCardSize("large");
+      S5.setCardValue("10");
+      S5.setCardSuit("Spade");
      S5.draw(g);
     }
 

@@ -90,13 +90,15 @@ public class Card extends ShapeClass
 	}
 	else if (down == false)
 	{
-
-	   g.setColor (Color.black);
+	    g.setColor (Color.white);
+	    g.fillRect (getCentreX () - getWidth () / 2, getCentreY () - getHeight () / 2, getWidth (), getHeight ());
+	    g.setColor (Color.black);
 	    g.drawRect (getCentreX () - getWidth () / 2, getCentreY () - getHeight () / 2, getWidth (), getHeight ());
+
 	    if (suitss == "Spade")
 	    {
 
-	     
+
 
 		Spade C3 = new Spade ();
 		C3.setCentre (getCentreX (), getCentreY ());
@@ -123,13 +125,40 @@ public class Card extends ShapeClass
 		Clubs C4 = new Clubs ();
 		C4.draw (g);
 	    }
-	   
+
 	    g.drawString (CardValue, getCentreX () - getWidth () / 2 + 7, getCentreY () - getHeight () / 2 + 12)
-	       ; g.drawString (CardValue, getCentreX () + getWidth () / 2 - 14, getCentreY () + getHeight () / 2 - 12)
-	       ;
+		;
+	    g.drawString (CardValue, getCentreX () + getWidth () / 2 - 14, getCentreY () + getHeight () / 2 - 12)
+		;
 	}
 
     }
+
+
+    public boolean isPointInside (int x, int y)
+    {
+
+	//    g.fillRect (getCentreX () - getWidth () / 2, getCentreY () - getHeight () / 2, getWidth (), getHeight ());
+	if (x > getCentreX () - getWidth () / 2 && x < getCentreX () - getWidth () / 2 + getWidth ())
+
+	{
+
+	    if (y > getCentreY () - getHeight () / 2 && y < getCentreY () - getHeight () / 2 + getHeight ()){
+		;
+	    return true;
+	}
+	    else{return false;}}
+    else{return false;}}
+	    
+	    
+
+
+
+
+
+    
+
+
 
 
 
