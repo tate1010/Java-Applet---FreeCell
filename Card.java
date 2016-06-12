@@ -1,9 +1,11 @@
 import java.awt.*;
-public class Card extends ShapeClass
+import java.awt.event.*;
+public class Card extends ShapeClass implements ActionListener, MouseListener, MouseMotionListener
 {
 
-
-    protected String CardValue = "A";
+    protected boolean OKtoMove = false;
+    protected int CardValue = 1;
+    String[] Value = new String [] {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
     protected String suitss = "Spade";
     protected boolean down = false;
     public Card ()
@@ -15,19 +17,27 @@ public class Card extends ShapeClass
     }
 
 
-    public String getCardValue ()
+    public int getCardValue ()
     {
 	return CardValue;
 
     }
 
 
-    public void setCardValue (String value)
+    public void setCardValue (int value)
     {
 	CardValue = value;
     }
 
-
+    public void setCardValue (String value)
+    {
+    for (int i = 1; i < 14; i++){
+    if(value == Value[i-1   ]){
+    CardValue = i;
+    }
+    
+    }
+    }
     public void setCardSize (String value)
     {
 	if (value == "Small")
@@ -101,9 +111,13 @@ public class Card extends ShapeClass
 
 
 		Spade C3 = new Spade ();
-		C3.setCentre (getCentreX (), getCentreY ());
+		C3.setCentre (getCentreX () + getWidth () / 2 -7 , getCentreY () - getHeight () / 2 + 12);
 
 		C3.draw (g);
+		C3.setCentre(getCentreX () - getWidth () / 2 + 14, getCentreY () + getHeight () / 2 - 12);
+		C3.draw(g);
+		C3.setCentre(getCentreX(),getCentreY());
+		C3.draw(g);
 
 	    }
 	    else if (suitss == "Diamond")
@@ -111,24 +125,42 @@ public class Card extends ShapeClass
 
 
 		Diamond C2 = new Diamond ();
+		C2.setCentre (getCentreX () + getWidth () / 2 -7 , getCentreY () - getHeight () / 2 + 12);
+
 		C2.draw (g);
+		C2.setCentre(getCentreX () - getWidth () / 2 + 14, getCentreY () + getHeight () / 2 - 12);
+		C2.draw(g);
+		C2.setCentre(getCentreX(),getCentreY());
+		C2.draw(g);
 
 
 	    }
 	    else if (suitss == "Heart")
 	    {
 		Heart C1 = new Heart ();
+	       C1.setCentre (getCentreX () + getWidth () / 2 -7 , getCentreY () - getHeight () / 2 + 12);
+
 		C1.draw (g);
+		C1.setCentre(getCentreX () - getWidth () / 2 + 14, getCentreY () + getHeight () / 2 - 12);
+		C1.draw(g);
+		C1.setCentre(getCentreX(),getCentreY());
+		C1.draw(g);
 	    }
 	    else if (suitss == "Club")
 	    {
 		Clubs C4 = new Clubs ();
+		C4.setCentre (getCentreX () + getWidth () / 2 -7 , getCentreY () - getHeight () / 2 + 12);
+
 		C4.draw (g);
+		C4.setCentre(getCentreX () - getWidth () / 2 + 14, getCentreY () + getHeight () / 2 - 12);
+		C4.draw(g);
+		C4.setCentre(getCentreX(),getCentreY());
+		C4.draw(g);
 	    }
 
-	    g.drawString (CardValue, getCentreX () - getWidth () / 2 + 7, getCentreY () - getHeight () / 2 + 12)
+	    g.drawString (Value[CardValue-1], getCentreX () - getWidth () / 2 + 7, getCentreY () - getHeight () / 2 + 12)
 		;
-	    g.drawString (CardValue, getCentreX () + getWidth () / 2 - 14, getCentreY () + getHeight () / 2 - 12)
+	    g.drawString (Value[CardValue-1], getCentreX () + getWidth () / 2 - 14, getCentreY () + getHeight () / 2 - 12)
 		;
 	}
 
@@ -141,29 +173,93 @@ public class Card extends ShapeClass
 	//    g.fillRect (getCentreX () - getWidth () / 2, getCentreY () - getHeight () / 2, getWidth (), getHeight ());
 	if (x > getCentreX () - getWidth () / 2 && x < getCentreX () - getWidth () / 2 + getWidth ())
 
+	    {
+
+		if (y > getCentreY () - getHeight () / 2 && y < getCentreY () - getHeight () / 2 + getHeight ())
+		{
+		    ;
+		    return true;
+		}
+		else
+		{
+		    return false;
+		}
+	    }
+	else
+	{
+	    return false;
+	}
+    }
+
+
+
+
+    //////
+    public void actionPerformed (ActionEvent e)
+    {
+    }
+
+
+    public void mouseEntered (MouseEvent event)
+    {
+    }
+
+
+    public void mouseExited (MouseEvent event)
+    {
+    }
+
+
+    public void mousePressed (MouseEvent e)
+    {
+
+	if (isPointInside (e.getX (), e.getY ()) == true)
+	    System.out.println ("a");
 	{
 
-	    if (y > getCentreY () - getHeight () / 2 && y < getCentreY () - getHeight () / 2 + getHeight ()){
-		;
-	    return true;
+	    OKtoMove = true;
+	    setCentre (e.getX (), e.getY ());
+
+
+
 	}
-	    else{return false;}}
-    else{return false;}}
-	    
-	    
+
+    }
+
+
+    public void mouseReleased (MouseEvent event)
+    {
+	OKtoMove = false;
+
+    }
+
+
+    public void mouseClicked (MouseEvent event)
+    {
+	System.out.println ("A");
+    }
+
+
+    public void mouseDragged (MouseEvent e)
+    {
+
+
+	if (OKtoMove == true)
+	{
+
+	    setCentre (e.getX (), e.getY ());
+
+	}
+    }
+
+
+    public void mouseMoved (MouseEvent e)
+    {
 
 
 
 
-
-    
-
-
-
-
-
-
-
+    }
 }
 
 

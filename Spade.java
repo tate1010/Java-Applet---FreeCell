@@ -3,9 +3,8 @@ import java.lang.Math;
 public class Spade extends suits
 {
 public Spade(){
-setWidth(10);
-setHeight(12);
-
+setWidth(13);
+setHeight(17);
 }
 
     public void draw (Graphics g)

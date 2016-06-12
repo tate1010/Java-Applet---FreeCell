@@ -4,7 +4,7 @@ public class Deck extends ShapeClass
 {
 
 
-    public Vector Deck = new Vector ();
+    public Vector Deck = new Vector (0,1);
 
     public int count ()
     {
@@ -54,7 +54,7 @@ public class Deck extends ShapeClass
     
  Card C1 = new Card();
  C1 = (Card) Deck.elementAt (0);
-     Deck.remove (0);
+     Deck.remove(0);
      
 	return C1;
        
@@ -74,12 +74,12 @@ public class Deck extends ShapeClass
 	}
     }
 public void shuffle(){
-for (int i= 0; i<1000; i ++){
-Card C2 = new Card();
-C2 = deal();
-addat(C2,(int) (Math.random () * 52));
 
+
+for (int i = 0 ; i < 1000; i ++){
+  Deck.add ((int)(Math.random()*count()-1),deal());
 }
+
 }
 
 public void draw(Graphics G){

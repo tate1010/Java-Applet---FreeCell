@@ -5,8 +5,8 @@ public class Diamond extends suits
 
 public  Diamond(){
 setColor(Color.red);
-setWidth(10);
-setHeight(12);
+setWidth(13);
+setHeight(17);
 
 }
 

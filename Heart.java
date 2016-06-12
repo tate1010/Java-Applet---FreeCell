@@ -5,8 +5,8 @@ public class Heart extends suits
 
 public  Heart(){
 setColor(Color.red);
-setWidth(10);
-setHeight(12);
+setWidth(13);
+setHeight(17);
 }
 
     public void draw (Graphics g)
