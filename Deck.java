@@ -77,7 +77,7 @@ public void shuffle(){
 
 
 for (int i = 0 ; i < 1000; i ++){
-  Deck.add ((int)(Math.random()*count()-1),deal());
+  Deck.add ((int)(Math.random()*count()-1)+1,deal());
 }
 
 }

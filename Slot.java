@@ -19,24 +19,7 @@ public class Slot implements ActionListener, MouseListener, MouseMotionListener
     }
 
 
-    public Card deal ()
-    {
-
-	if (filled == true)
-	{
-	    Card C1 = new Card ();
-	    C1 = (Card) Slot.elementAt (0);
-	    Slot.clear ();
-	    filled = false;
-	    return C1;
-	}
-
-	else
-	{
-	    return null;
-	}
-    }
-
+ 
 
 
 
@@ -44,11 +27,11 @@ public class Slot implements ActionListener, MouseListener, MouseMotionListener
     {
 
 	//    g.fillRect (getCentreX () - getWidth () / 2, getCentreY () - getHeight () / 2, getWidth (), getHeight ());
-	if (x > getCentreX () - getWidth () / 2 && x < getCentreX () - getWidth () / 2 + getWidth ())
+	if (x > Locationx - 30 && x < Locationx + 30)
 
 	    {
 
-		if (y > getCentreY () - getHeight () / 2 && y < getCentreY () - getHeight () / 2 + getHeight ())
+		if (y > Locationy - 40 && y < Locationy + 40)
 		{
 		    ;
 		    return true;
@@ -91,6 +74,32 @@ public class Slot implements ActionListener, MouseListener, MouseMotionListener
 
     ////
 
+  public boolean AddCheck(MouseEvent e){
+  
+  if (isPointInside (e.getX (), e.getY ())){
+  return true;
+  
+  }
+  else return false;
+  }
+
+   public Card deal (MouseEvent e)
+    {
+
+	if (isPointInside(e.getX(),e.getY()) && filled )
+	{
+	    Card C1 = new Card ();
+	    C1 = (Card) Slot.elementAt (0);
+	    Slot.clear ();
+	    filled = false;
+	    return C1;
+	}
+
+	else
+	{
+	    return null;
+	}
+    }
 
     //////////
 
@@ -112,39 +121,39 @@ public class Slot implements ActionListener, MouseListener, MouseMotionListener
 
     public void mousePressed (MouseEvent e)
     {
-	if(isPointInside)
 
 
 
-	}
 
-
-	public void mouseReleased (MouseEvent event)
-	{
-
-	}
-
-
-	public void mouseClicked (MouseEvent event)
-	{
-
-
-
-	}
-
-
-	public void mouseDragged (MouseEvent e)
-	{
-
-
-
-	}
-
-
-	public void mouseMoved (MouseEvent e)
-	{
-
-	}
     }
+
+
+    public void mouseReleased (MouseEvent event)
+    {
+
+    }
+
+
+    public void mouseClicked (MouseEvent event)
+    {
+
+
+
+    }
+
+
+    public void mouseDragged (MouseEvent e)
+    {
+
+
+
+    }
+
+
+    public void mouseMoved (MouseEvent e)
+    {
+
+    }
+}
 
 
