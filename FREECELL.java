@@ -39,7 +39,16 @@ public class FREECELL extends Applet implements ActionListener, MouseListener, M
     {
 
 	bufferPaint ();
+
 	g.drawImage (buffer, 0, 0, this);
+	    if (GAME.WINTEST ())
+	{
+
+   g.setFont (new Font ("TimesRoman", Font.PLAIN, 90));
+	g.drawString ("YOU WIN", 300, 360);
+
+	}
+     
     }
 
 
@@ -52,11 +61,13 @@ public class FREECELL extends Applet implements ActionListener, MouseListener, M
 
 	GAME.draw (bufferGraphics);
 
+    
     }
 
 
     public void paint (Graphics g)
     {
+
 	if (buffer == null)
 	{
 	    buffer = new BufferedImage (getWidth (), getHeight (), BufferedImage.TYPE_INT_ARGB);
@@ -87,13 +98,13 @@ public class FREECELL extends Applet implements ActionListener, MouseListener, M
 
     public void mousePressed (MouseEvent e)
     {
-GAME.mousePressed(e);
+	GAME.mousePressed (e);
     }
 
 
-    public void mouseReleased (MouseEvent event)
+    public void mouseReleased (MouseEvent e)
     {
-
+	GAME.mouseReleased (e);
     }
 
 
@@ -108,8 +119,7 @@ GAME.mousePressed(e);
     public void mouseDragged (MouseEvent e)
     {
 
-
-
+	GAME.mouseMoved (e);
 
     }
 

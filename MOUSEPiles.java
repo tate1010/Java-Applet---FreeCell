@@ -3,7 +3,7 @@ import java.util.*;
 
 public class MOUSEPiles extends Piles
 {
-
+ protected int lp = -1 ;
     public boolean oneCard ()
     {
 
@@ -19,9 +19,9 @@ public class MOUSEPiles extends Piles
     public Card deal ()
     {
 
-	if (oneCard ())
+       
+   if (hassomecard ())
 	{
-
 
 	    Card C1 = new Card ();
 	    C1 = (Card) P1.elementAt (0);
@@ -29,9 +29,28 @@ public class MOUSEPiles extends Piles
 
 	    return C1;
 
-
 	}
 	else
 	    return null;
+    }
+
+
+    public boolean hassomecard ()
+    {
+	if (P1.size () == 0)
+	{
+
+	    return false;
+	}
+	else
+	    return true;
+
+    }
+    public void LastPile(int a){
+    lp = a;
+    }
+    public int GetLastPile(){
+    
+    return lp;
     }
 }

@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class Piles implements ActionListener, MouseListener, MouseMotionListener
 {
-    protected Vector P1 = new Vector (13);
+    protected Vector P1 = new Vector (13,1);
 
     protected int Locationx;
     protected int Locationy;
@@ -17,7 +17,7 @@ public class Piles implements ActionListener, MouseListener, MouseMotionListener
 
 	    {
 
-		if (y > Locationy +20*(i-2) && y < Locationy +20*(i-1))
+		if (y > Locationy + 20 * (i - 2) && y < Locationy + 20 * (i - 1))
 		{
 		    ;
 		    return true;
@@ -54,21 +54,64 @@ public class Piles implements ActionListener, MouseListener, MouseMotionListener
     }
 
 
+    public boolean addCheck (Card C)
+    {
+    if(P1.size() == 0){
+    return true;
+    }
+
+
+	if (((Card) P1.lastElement ()).getCardValue () == C.getCardValue () + 1)
+
+	    {
+
+		String s = ((Card) P1.lastElement ()).getCardSuit ();
+
+		if (s == "Spade" || s == "Club")
+		{
+		    if (C.getCardSuit () == "Heart" || C.getCardSuit () == "Diamond")
+		    {
+
+			return true;
+		    }
+		    else
+			return false;
+
+		}
+		else if (s == "Heart" || s == "Diamond")
+		{
+		    if (C.getCardSuit () == "Spade" || C.getCardSuit () == "Club")
+		    {
+			return true;
+
+		    }
+		    else
+			return false;
+		}
+		else return false;
+
+	    }
+	    else return false;
+
+    }
+
+
     public int PilesCheck (MouseEvent e)
     {
 
 
-	for (int i = 0 ; i < P1.size ()+3 ; i++)
+	for (int i = 0 ; i < P1.size () + 3 ; i++)
 	{
 	    if (isCardInside (e.getX (), e.getY (), i))
 	    {
-		if (i > P1.size()){
-		i = P1.size()-1;
-		
+		if (i > P1.size ())
+		{
+		    i = P1.size () - 1;
+
 		}
 		return i;
-	     
- 
+
+
 	    }
 
 
@@ -91,15 +134,20 @@ public class Piles implements ActionListener, MouseListener, MouseMotionListener
 	}
 	return null;
     }
-    public void RemoveCard(int index){
-    
-	   for (int i = index; i < P1.size(); i++){
-	   P1.remove(index);
-	   
-	   }
-	    
-    
+
+
+    public void RemoveCard (int index)
+    {
+int a = P1.size ();
+	for (int i = index ; i < a  ; i++)
+	{
+	    P1.remove (index);
+
+	}
+
+
     }
+
 
     public void draw (Graphics g)
     {
@@ -124,10 +172,14 @@ public class Piles implements ActionListener, MouseListener, MouseMotionListener
 	    return false;
     }
 
-    public int size(){
-    return P1.size();
-    
+
+    public int size ()
+    {
+	return P1.size ();
+
     }
+
+
     ///
 
     public void actionPerformed (ActionEvent e)
