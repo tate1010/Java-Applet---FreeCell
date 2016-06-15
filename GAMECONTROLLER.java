@@ -509,7 +509,7 @@ return true;
 		else if (MOUSE.GetLastPile () == 7)
 		{
 
-		    P8.addCard (MOUSE.deal ());
+		    P7.addCard (MOUSE.deal ());
 
 		}
 		else if (MOUSE.GetLastPile () == 8)
