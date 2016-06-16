@@ -11,6 +11,7 @@ public class FREECELL extends Applet implements ActionListener, MouseListener, M
     Graphics g;
     BufferedImage buffer = null;
     Graphics bufferGraphics;
+    Button buttonDraw = new Button ("Reset");
 
 
     class RepaintTask extends TimerTask
@@ -28,8 +29,8 @@ public class FREECELL extends Applet implements ActionListener, MouseListener, M
 	addMouseListener (this);
 	addMouseMotionListener (this);
 	g = getGraphics ();
-
-
+	add (buttonDraw);
+	buttonDraw.addActionListener (this);
 
 
     }
@@ -41,14 +42,14 @@ public class FREECELL extends Applet implements ActionListener, MouseListener, M
 	bufferPaint ();
 
 	g.drawImage (buffer, 0, 0, this);
-	    if (GAME.WINTEST ())
+	if (GAME.WINTEST ())
 	{
 
-   g.setFont (new Font ("TimesRoman", Font.PLAIN, 90));
-	g.drawString ("YOU WIN", 300, 360);
+	    g.setFont (new Font ("TimesRoman", Font.PLAIN, 90));
+	    g.drawString ("YOU WIN", 300, 360);
 
 	}
-     
+
     }
 
 
@@ -61,7 +62,7 @@ public class FREECELL extends Applet implements ActionListener, MouseListener, M
 
 	GAME.draw (bufferGraphics);
 
-    
+
     }
 
 
@@ -83,6 +84,12 @@ public class FREECELL extends Applet implements ActionListener, MouseListener, M
 
     public void actionPerformed (ActionEvent e)
     {
+	Object objSource = e.getSource ();
+	if (objSource == buttonDraw)
+	{
+	    init ();
+	    repaint();
+	}
     }
 
 

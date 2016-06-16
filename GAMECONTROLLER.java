@@ -4,29 +4,73 @@ import java.awt.event.*;
 public class GAMECONTROLLER implements Cloneable, ActionListener, MouseListener, MouseMotionListener
 
 {
-    STDECK D = new STDECK ();
-    Piles P1 = new Piles ();
-    Piles P2 = new Piles ();
-    Piles P3 = new Piles ();
-    Piles P4 = new Piles ();
-    Piles P5 = new Piles ();
-    Piles P6 = new Piles ();
-    Piles P7 = new Piles ();
-    Piles P8 = new Piles ();
-    MOUSEPiles MOUSE = new MOUSEPiles ();
-    Slot S1 = new Slot ();
-    Slot S2 = new Slot ();
-    Slot S3 = new Slot ();
-    Slot S4 = new Slot ();
-    Foundations F1 = new Foundations ();
-    Foundations F2 = new Foundations ();
-    Foundations F3 = new Foundations ();
-    Foundations F4 = new Foundations ();
+    STDECK D;
+    Piles P1;
+    Piles P2;
+    Piles P3;
+    Piles P4;
+    Piles P5;
+    Piles P6;
+    Piles P7;
+    Piles P8;
+    MOUSEPiles MOUSE;
+    Slot S1;
+    Slot S2;
+    Slot S3;
+    Slot S4;
+    Foundations F1;
+    Foundations F2;
+    Foundations F3;
+    Foundations F4;
     boolean noaction = false;
+
+    public void reset ()
+    {
+	D = null;
+	P1 = null;
+	P2 = null;
+	P3 = null;
+	P4 = null;
+	P5 = null;
+	P6 = null;
+	P7 = null;
+	P8 = null;
+	MOUSE = null;
+	S1 = null;
+	S2 = null;
+	S3 = null;
+	S4 = null;
+	F1 = null;
+	F2 = null;
+	F3 = null;
+	F4 = null;
+	System.gc();
+
+	//   destory
+	D = new STDECK ();
+	P1 = new Piles ();
+	P2 = new Piles ();
+	P3 = new Piles ();
+	P4 = new Piles ();
+	P5 = new Piles ();
+	P6 = new Piles ();
+	P7 = new Piles ();
+	P8 = new Piles ();
+	MOUSE = new MOUSEPiles ();
+	S1 = new Slot ();
+	S2 = new Slot ();
+	S3 = new Slot ();
+	S4 = new Slot ();
+	F1 = new Foundations ();
+	F2 = new Foundations ();
+	F3 = new Foundations ();
+	F4 = new Foundations ();
+    }
 
 
     public void init ()
     {
+	reset ();
 	///////////////INIT///////////////
 	D.shuffle ();
 	P1.setLocation (100, 200);
@@ -102,7 +146,7 @@ public class GAMECONTROLLER implements Cloneable, ActionListener, MouseListener,
 	}
 
 
-	for (int b = 1 ; b < 3 ; b++)
+	for (int b = 1 ; b < 7 ; b++)
 	{
 	    P8.addCard (D.deal ());
 
@@ -117,10 +161,11 @@ public class GAMECONTROLLER implements Cloneable, ActionListener, MouseListener,
 
 	if (F1.WINTEST () && F2.WINTEST () && F3.WINTEST () && F4.WINTEST ())
 	{
-return true;
+	    return true;
 
 	}
-	else return false;
+	else
+	    return false;
     }
 
 
@@ -269,11 +314,11 @@ return true;
 	    }
 	    else if (P8.PilesCheck (e) != -1)
 	    {
-	    
+
 		MOUSE.LastPile (8);
 		for (int i = P8.PilesCheck (e) ; i < P8.size () ; i++)
 		{
-	 
+
 		    MOUSE.addCard (P8.releaseCard (i));
 		}
 		P8.RemoveCard (P8.PilesCheck (e));
@@ -317,10 +362,10 @@ return true;
 
     public void mouseReleased (MouseEvent e)
     {
- 
+
 	if (MOUSE.hassomecard ())
 	{
-	
+
 	    int num = MOUSE.size ();
 	    //
 	    if (P1.PilesCheck (e) > P1.size () - 2 && P1.addCheck (MOUSE.releaseCard (0)))
@@ -420,9 +465,9 @@ return true;
 
 	if (MOUSE.oneCard ())
 	{
-      
-    
-	
+
+
+
 	    if (S1.AddCheck (e) && !S1.isFilled ())
 	    {
 		S1.addCard (MOUSE.deal ());
@@ -433,7 +478,7 @@ return true;
 	    }
 	    else if (S3.AddCheck (e) && !S3.isFilled ())
 	    {
-	    
+
 		S3.addCard (MOUSE.deal ());
 	    }
 	    else if (S4.AddCheck (e) && !S4.isFilled ())
