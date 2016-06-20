@@ -10,6 +10,10 @@ public class Foundations implements ActionListener, MouseListener, MouseMotionLi
     protected int value = 1;
     protected String suitss;
     protected Vector base = new Vector (13);
+    public void clear(){
+    base.clear();
+    value = 1;
+    }
     public void addCard (Card C)
     {
 

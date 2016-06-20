@@ -19,8 +19,13 @@ public class Slot implements ActionListener, MouseListener, MouseMotionListener
     }
 
 
- 
 
+    public void clear ()
+    {
+
+	Slot.clear ();
+	filled = false;
+    }
 
 
     public boolean isPointInside (int x, int y)
@@ -74,19 +79,30 @@ public class Slot implements ActionListener, MouseListener, MouseMotionListener
 
     ////
 
-  public boolean AddCheck(MouseEvent e){
-  
-  if (isPointInside (e.getX (), e.getY ())){
-  return true;
-  
-  }
-  else return false;
-  }
-
-   public Card deal (MouseEvent e)
+    public boolean AddCheck (MouseEvent e)
     {
 
-	if (isPointInside(e.getX(),e.getY()) && filled )
+	if (isPointInside (e.getX (), e.getY ()))
+	{
+	    return true;
+
+	}
+	else
+	    return false;
+    }
+
+
+    public boolean isFilled ()
+    {
+	return filled;
+
+    }
+
+
+    public Card deal (MouseEvent e)
+    {
+
+	if (isPointInside (e.getX (), e.getY ()) && filled)
 	{
 	    Card C1 = new Card ();
 	    C1 = (Card) Slot.elementAt (0);
@@ -100,6 +116,7 @@ public class Slot implements ActionListener, MouseListener, MouseMotionListener
 	    return null;
 	}
     }
+
 
     //////////
 

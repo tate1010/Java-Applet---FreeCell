@@ -4,11 +4,15 @@ import java.awt.event.*;
 
 public class Piles implements ActionListener, MouseListener, MouseMotionListener
 {
-    protected Vector P1 = new Vector (13,1);
+    protected Vector P1 = new Vector (13, 1);
 
     protected int Locationx;
     protected int Locationy;
     //
+    public void clear(){
+    P1.clear();
+    
+    }
     public boolean isCardInside (int x, int y, int i)
     {
 
@@ -56,12 +60,13 @@ public class Piles implements ActionListener, MouseListener, MouseMotionListener
 
     public boolean addCheck (Card C)
     {
-    if(P1.size() == 0){
-    return true;
-    }
+	if (P1.size () == 0)
+	{
+	    return true;
+	}
 
 
-	if (((Card) P1.lastElement ()).getCardValue () == C.getCardValue () + 1)
+	else if (((Card) P1.lastElement ()).getCardValue () == C.getCardValue () + 1)
 
 	    {
 
@@ -88,10 +93,12 @@ public class Piles implements ActionListener, MouseListener, MouseMotionListener
 		    else
 			return false;
 		}
-		else return false;
+		else
+		    return false;
 
 	    }
-	    else return false;
+	else
+	    return false;
 
     }
 
@@ -138,8 +145,8 @@ public class Piles implements ActionListener, MouseListener, MouseMotionListener
 
     public void RemoveCard (int index)
     {
-int a = P1.size ();
-	for (int i = index ; i < a  ; i++)
+	int a = P1.size ();
+	for (int i = index ; i < a ; i++)
 	{
 	    P1.remove (index);
 

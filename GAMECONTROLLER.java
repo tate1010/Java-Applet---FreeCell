@@ -4,73 +4,57 @@ import java.awt.event.*;
 public class GAMECONTROLLER implements Cloneable, ActionListener, MouseListener, MouseMotionListener
 
 {
-    STDECK D;
-    Piles P1;
-    Piles P2;
-    Piles P3;
-    Piles P4;
-    Piles P5;
-    Piles P6;
-    Piles P7;
-    Piles P8;
-    MOUSEPiles MOUSE;
-    Slot S1;
-    Slot S2;
-    Slot S3;
-    Slot S4;
-    Foundations F1;
-    Foundations F2;
-    Foundations F3;
-    Foundations F4;
+    STDECK D = new STDECK ();
+    Piles P1 = new Piles ();
+    Piles P2 = new Piles ();
+    Piles P3 = new Piles ();
+    Piles P4 = new Piles ();
+    Piles P5 = new Piles ();
+    Piles P6 = new Piles ();
+    Piles P7 = new Piles ();
+    Piles P8 = new Piles ();
+    MOUSEPiles MOUSE = new MOUSEPiles ();
+    Slot S1 = new Slot ();
+    Slot S2 = new Slot ();
+    Slot S3 = new Slot ();
+    Slot S4 = new Slot ();
+    Foundations F1 = new Foundations ();
+    Foundations F2 = new Foundations ();
+    Foundations F3 = new Foundations ();
+    Foundations F4
+	= new Foundations ();
     boolean noaction = false;
+    int Movecount;
 
     public void reset ()
     {
-	D = null;
-	P1 = null;
-	P2 = null;
-	P3 = null;
-	P4 = null;
-	P5 = null;
-	P6 = null;
-	P7 = null;
-	P8 = null;
-	MOUSE = null;
-	S1 = null;
-	S2 = null;
-	S3 = null;
-	S4 = null;
-	F1 = null;
-	F2 = null;
-	F3 = null;
-	F4 = null;
-	System.gc();
+
 
 	//   destory
 	D = new STDECK ();
-	P1 = new Piles ();
-	P2 = new Piles ();
-	P3 = new Piles ();
-	P4 = new Piles ();
-	P5 = new Piles ();
-	P6 = new Piles ();
-	P7 = new Piles ();
-	P8 = new Piles ();
-	MOUSE = new MOUSEPiles ();
-	S1 = new Slot ();
-	S2 = new Slot ();
-	S3 = new Slot ();
-	S4 = new Slot ();
-	F1 = new Foundations ();
-	F2 = new Foundations ();
-	F3 = new Foundations ();
-	F4 = new Foundations ();
+	P1.clear ();
+	P2.clear ();
+	P3.clear ();
+	P4.clear ();
+	P5.clear ();
+	P6.clear ();
+	P7.clear ();
+	P8.clear ();
+	F1.clear ();
+	F2.clear ();
+	F3.clear ();
+	F4.clear ();
+	S1.clear ();
+	S2.clear ();
+	S3.clear ();
+	S4.clear ();
+
     }
 
 
     public void init ()
     {
-	reset ();
+	Movecount = 0;
 	///////////////INIT///////////////
 	D.shuffle ();
 	P1.setLocation (100, 200);
@@ -166,6 +150,13 @@ public class GAMECONTROLLER implements Cloneable, ActionListener, MouseListener,
 	}
 	else
 	    return false;
+    }
+
+
+    public int Movecount ()
+    {
+
+	return Movecount;
     }
 
 
@@ -322,6 +313,7 @@ public class GAMECONTROLLER implements Cloneable, ActionListener, MouseListener,
 		    MOUSE.addCard (P8.releaseCard (i));
 		}
 		P8.RemoveCard (P8.PilesCheck (e));
+
 	    }
 	    /////////
 	    if (F1.AddCheck (e))
@@ -458,9 +450,16 @@ public class GAMECONTROLLER implements Cloneable, ActionListener, MouseListener,
 			P8.addCard (MOUSE.deal ());
 		    }
 		}
-	    else
-		noaction = true;
 
+	    else
+	    {
+		noaction = true;
+	    }
+
+	    if (noaction == false)
+	    {
+		Movecount += 1;
+	    }
 	}
 
 	if (MOUSE.oneCard ())
@@ -470,42 +469,55 @@ public class GAMECONTROLLER implements Cloneable, ActionListener, MouseListener,
 
 	    if (S1.AddCheck (e) && !S1.isFilled ())
 	    {
-		S1.addCard (MOUSE.deal ());
+		S1.addCard (MOUSE.deal ());  
+		Movecount += 1;
+	    
 	    }
 	    else if (S2.AddCheck (e) && !S2.isFilled ())
 	    {
 		S2.addCard (MOUSE.deal ());
+		Movecount += 1;
 	    }
 	    else if (S3.AddCheck (e) && !S3.isFilled ())
 	    {
 
 		S3.addCard (MOUSE.deal ());
+		Movecount += 1;
 	    }
 	    else if (S4.AddCheck (e) && !S4.isFilled ())
 	    {
+	    Movecount += 1;
 		S4.addCard (MOUSE.deal ());
 	    }
 	    else if (F1.AddCheck (e) && F1.NextCard (MOUSE.releaseCard (0)))
 	    {
+	    Movecount += 1;
 		F1.addCard (MOUSE.deal ());
 	    }
-	    else if (F2.AddCheck (e) && F2.NextCard (MOUSE.releaseCard (0)))
+	    else if (F2.AddCheck (e) && F2. NextCard (MOUSE.releaseCard (0)))
 	    {
+	    Movecount += 1;
 		F2.addCard (MOUSE.deal ());
 	    }
 	    else if (F3.AddCheck (e) && F3.NextCard (MOUSE.releaseCard (0)))
 	    {
+	    Movecount += 1;
 		F3.addCard (MOUSE.deal ());
 	    }
 	    else if (F4.AddCheck (e) && F4.NextCard (MOUSE.releaseCard (0)))
 	    {
+	    Movecount += 1;
 		F4.addCard (MOUSE.deal ());
 	    }
 	    else
+	    {
 		noaction = true;
-
+	    }
+	  
 
 	}
+
+
 	if (noaction == true)
 	{
 	    int num = MOUSE.size ();
@@ -615,6 +627,7 @@ public class GAMECONTROLLER implements Cloneable, ActionListener, MouseListener,
 	    }
 
 	}
+
     }
 
 
